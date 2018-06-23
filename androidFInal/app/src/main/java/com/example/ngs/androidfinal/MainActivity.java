@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 timeSelect=i;
             }
         }
-        for(int i=4;i<8;i++){
+        for(int i=4;i<9;i++){
             if(hour == 9+i){
                 timeSelect=i;
             }
