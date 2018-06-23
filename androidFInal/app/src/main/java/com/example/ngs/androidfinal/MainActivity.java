@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     classRoom CR;
     ListView lv;
     Spinner spnWeek,spnTimeStart,spnTimeEnd,spnBuilding;
+    Button btnNow;
     int timeStart,timeEnd,week,building;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         spnTimeStart = (Spinner) findViewById(R.id.spn_time_start);
         spnTimeEnd = (Spinner)findViewById(R.id.spn_time_end);
         spnWeek = (Spinner) findViewById(R.id.spn_week);
+        btnNow = (Button) findViewById(R.id.btn_now);
         list = new ArrayList<>();
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,list);
         CR = new classRoom();
@@ -49,9 +51,16 @@ public class MainActivity extends AppCompatActivity {
         spnTimeStart.setOnItemSelectedListener(timeStartListener);
         spnTimeEnd.setOnItemSelectedListener(timeEndListener);
         spnBuilding.setOnItemSelectedListener(buildingListener);
+        btnNow.setOnClickListener(GetNowOnClick);
         SetNow();
 
     }
+    View.OnClickListener GetNowOnClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            SetNow();
+        }
+    };
     void SetNow(){
         LocalDate date = LocalDate.now();
         DayOfWeek dayOfWeek = date.getDayOfWeek();
@@ -170,7 +179,6 @@ public class MainActivity extends AppCompatActivity {
         }
         @Override
         public void onCancelled(DatabaseError databaseError) {
-
         }
     };
 }

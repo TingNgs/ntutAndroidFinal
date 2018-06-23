@@ -6,53 +6,66 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-
-            android:layout_marginHorizontal="10dp">
+            android:layout_height="wrap_content">
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="3"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="5dp"
-                android:orientation="horizontal"><TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="星期："/>
-                <Spinner
-                    android:id="@+id/spn_week"
+                android:orientation="vertical"
+                android:layout_marginHorizontal="10dp">
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:entries="@array/week"
-                    android:textSize="20dp"
-                    android:layout_height="wrap_content"></Spinner></LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="5dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:text="教學大樓："/>
-                <Spinner
-                    android:id="@+id/spn_building"
-                    android:entries="@array/building"
+                    android:layout_marginVertical="5dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20dp"
+                        android:text="星期："/>
+                    <Spinner
+                        android:id="@+id/spn_week"
+                        android:layout_width="match_parent"
+                        android:entries="@array/week"
+                        android:textSize="20dp"
+                        android:layout_height="wrap_content"></Spinner>
+                </LinearLayout>
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:textSize="20dp"
-                    android:layout_height="wrap_content">
-                </Spinner>
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="5dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20dp"
+                        android:text="教學大樓："/>
+                    <Spinner
+                        android:id="@+id/spn_building"
+                        android:entries="@array/building"
+                        android:layout_width="match_parent"
+                        android:textSize="20dp"
+                        android:layout_height="wrap_content">
+                    </Spinner>
+                </LinearLayout>
             </LinearLayout>
-
-
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                >
+                <Button
+                    android:id="@+id/btn_now"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="NOW"/>
+            </LinearLayout>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -69,7 +82,6 @@
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
                 android:text="由節數："/>
-
                 <Spinner
                     android:id="@+id/spn_time_start"
                     android:layout_width="match_parent"
@@ -84,14 +96,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="到節數："/>
-
                 <Spinner
                     android:id="@+id/spn_time_end"
                     android:layout_width="match_parent"
                     android:entries="@array/class_time"
                     android:textSize="20dp"
                     android:layout_height="wrap_content"></Spinner></LinearLayout>
-
         </LinearLayout>
     </LinearLayout>
     <ListView
