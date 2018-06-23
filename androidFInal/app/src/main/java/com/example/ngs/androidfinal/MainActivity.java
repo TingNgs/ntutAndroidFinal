@@ -18,7 +18,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
     ArrayList<String> list;
@@ -43,6 +49,43 @@ public class MainActivity extends AppCompatActivity {
         spnTimeStart.setOnItemSelectedListener(timeStartListener);
         spnTimeEnd.setOnItemSelectedListener(timeEndListener);
         spnBuilding.setOnItemSelectedListener(buildingListener);
+        SetNow();
+
+    }
+    void SetNow(){
+        LocalDate date = LocalDate.now();
+        DayOfWeek dayOfWeek = date.getDayOfWeek();
+        int dayOfWeekIntValue = dayOfWeek.getValue();
+        if(dayOfWeekIntValue == 7)dayOfWeekIntValue=0;
+        spnWeek.setSelection(dayOfWeekIntValue);
+        Calendar rightNow = Calendar.getInstance();
+        int hour = rightNow.get(Calendar.HOUR_OF_DAY);
+        int min = rightNow.get(Calendar.MINUTE);
+        int timeSelect = 0;
+        for(int i=0;i<4;i++){
+            if(hour == 8+i){
+                timeSelect=i;
+            }
+        }
+        for(int i=4;i<8;i++){
+            if(hour == 9+i){
+                timeSelect=i;
+            }
+        }
+        if(hour==18 ||(hour==19 && min<20)){
+            timeSelect=9;
+        }
+        if((hour==19 && min>=20) ||(hour==20 && min<10)){
+            timeSelect=10;
+        }
+        if((hour==20 && min>=10) ||(hour==21 && min<10)){
+            timeSelect=11;
+        }
+        if((hour==21 && min>=10)){
+            timeSelect=12;
+        }
+        spnTimeStart.setSelection(timeSelect);
+        spnTimeEnd.setSelection(timeSelect);
     }
     AdapterView.OnItemSelectedListener weekListener = new AdapterView.OnItemSelectedListener() {
         @Override
