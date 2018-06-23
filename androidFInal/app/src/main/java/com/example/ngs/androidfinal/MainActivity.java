@@ -1,5 +1,6 @@
 package com.example.ngs.androidfinal;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -47,14 +48,23 @@ public class MainActivity extends AppCompatActivity {
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,list);
         CR = new classRoom();
         lv = (ListView) findViewById(R.id.listView);
+        lv.setOnItemClickListener(lvViewClick);
         spnWeek.setOnItemSelectedListener(weekListener);
         spnTimeStart.setOnItemSelectedListener(timeStartListener);
         spnTimeEnd.setOnItemSelectedListener(timeEndListener);
         spnBuilding.setOnItemSelectedListener(buildingListener);
         btnNow.setOnClickListener(GetNowOnClick);
         SetNow();
-
     }
+    AdapterView.OnItemClickListener lvViewClick = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            String classSelected = parent.getItemAtPosition(position).toString();
+            Intent intent = new Intent(getBaseContext(),chatroom.class);
+            intent.putExtra("classRoomSelected",classSelected);
+            startActivity(intent);
+        }
+    };
     View.OnClickListener GetNowOnClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
