@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">androidFinal</string>
+    <string name="app_name">北科空教室</string>
     <string-array name="class_time">
         <item>1</item>
         <item>2</item>
